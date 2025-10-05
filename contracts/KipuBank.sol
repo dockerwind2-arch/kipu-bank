@@ -59,7 +59,9 @@ contract KipuBank {
     
     /// @notice Error cuando la transferencia de ETH falla.
     error ErrorTransferenciaFallida();
-
+	
+	/// @notice Error cuando amount es inválido.
+	error ErrorMontoInvalido();
 
     /*//////////////////////////////////////////////////////////////
                                CONSTRUCTOR
@@ -72,11 +74,15 @@ contract KipuBank {
         bankCap = _bankCap;
     }
 
+ /*//////////////////////////////////////////////////////////////
+                               MODIFIER
+    //////////////////////////////////////////////////////////////*/
+	
 	/// @notice Modificador para validar montos mayores a cero.
     /// @param amount Monto que se desea usar en una transacción.
     modifier validAmount(uint256 amount) {
-        require(amount > 0, "Monto debe ser mayor a cero");
-        _;
+        if (amount == 0) revert ErrorMontoInvalido();
+		_;
     }
     
     /*//////////////////////////////////////////////////////////////
