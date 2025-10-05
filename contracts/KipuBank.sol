@@ -72,6 +72,12 @@ contract KipuBank {
         bankCap = _bankCap;
     }
 
+	/// @notice Modificador para validar montos mayores a cero.
+    /// @param amount Monto que se desea usar en una transacción.
+    modifier validAmount(uint256 amount) {
+        require(amount > 0, "Monto debe ser mayor a cero");
+        _;
+    }
     
     /*//////////////////////////////////////////////////////////////
                                 FUNCIONES
@@ -95,7 +101,7 @@ contract KipuBank {
     /// @notice Permite a un usuario retirar fondos de su bóveda, respetando el límite por transacción.
     /// @dev Revierte si el retiro excede el limite y si los fondos son insuficientes.
     /// @param amount Monto a retirar en wei.
-    function withdraw(uint256 amount) external {
+    function withdraw(uint256 amount) external validAmount(amount) {
         if (amount > withdrawLimit) {
             revert ErrorRetiroExcedeLimite();
         }
