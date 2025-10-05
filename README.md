@@ -37,3 +37,8 @@ kipu-bank/
 * **deposit()** — `external payable` → enviar ETH al contrato.
 * **withdraw(uint256 amount)** — `external` → retira hasta `withdrawLimit`.
 * **getVaultBalance(address user)** — `external view returns (uint256)` → consultar balance del usuario.
+
+  ## 📍 Dirección del contrato desplegado
+- Testnet: Sepolia
+- Dirección: 0xa32d7cd8d3d5a626440273bd01ee08c166d5d633
+- Código verificado en: [Etherscan link](https://sepolia.etherscan.io/address/0xa32d7cd8d3d5a626440273bd01ee08c166d5d633)
